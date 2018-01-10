@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  <!-- 自定义的复合组件，是由todolist和todoinput-->
+  <to-do-box></to-do-box>
+</div>
+
+<script>
+  Vue.component('to-do-input',{
+    template:`<div>
+    <h1>待做事项列表</h1>
+    <input type="text"/>
+    <button>add</button>
+    </div>`
+  })
+
+  Vue.component('to-do-item',{
+    template:`<li>
+    <button>删除</button>
+    <span>吃饭</span>
+    </li>`
+  })
+
+  Vue.component('to-do-list',{
+    template:`
+    <ul>
+    <to-do-item></to-do-item>
+    <to-do-item></to-do-item>
+    </ul>
+    `
+  })
+
+
+  Vue.component('to-do-box',{
+    template:`
+    <div>
+      <to-do-input></to-do-input>
+      <to-do-list></to-do-list>
+    </div>
+    `
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    }
+  })
+</script>
+
+</body>
+</html>

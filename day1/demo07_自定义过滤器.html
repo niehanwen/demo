@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  {{msg | myUppercase}}
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    },
+    filters:{
+      //myUppercase是过滤器的名称，对应的是一个方法，
+      //在这个方法中的第一个参数是通过管道传递来的数据，后边的参数是通过圆括号在调用过滤器时传来的参数
+      myUppercase: function (value) {
+        return value.toUpperCase();
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  {{msg}}
+  <p v-change="1" v-if="showP">
+    this is custom directive
+  </p>
+  <button @click="modify">clickMe</button>
+</div>
+
+<script>
+  getRandomColor=function () {
+    var R = Math.floor(Math.random()*256);
+    var G = Math.floor(Math.random()*256);
+    var B = Math.floor(Math.random()*256);
+
+    var r_16 = R.toString(16);
+    var g_16 = G.toString(16);
+    var b_16 = B.toString(16);
+    return '#'+r_16+g_16+b_16;
+  }
+  var app = new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world',
+      showP:true
+    },
+    methods:{
+      modify: function () {
+        //修改数据，让使用了v-change指令的p移出掉
+        this.showP = !this.showP;
+      }
+    },
+    directives:{
+
+      change:{
+        //bind update unbind都是属于指令的钩子函数
+        //所谓的钩子函数 是会在指令的调用的过程中，在合适的阶段自动执行
+        bind: function (el,bindings) {
+          console.log('指令被调用了');
+          console.log(el);
+          console.log(bindings)
+          var color = getRandomColor();
+          console.log(color);
+
+          el.style.backgroundColor = color;
+        },
+        update: function () {
+          console.log('正在更新');
+        },
+        unbind: function () {
+          console.log('指令被解除绑定了');
+
+        }
+      }
+  }})
+</script>
+
+</body>
+</html>

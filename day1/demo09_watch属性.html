@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  <!-- 在用户输入的时候，要求将用户所输入的信息打印在控制台-->
+  <input type="text" v-model="myInput"/>
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      myInput:'',
+      msg: 'hello world'
+    },
+    //ng $scope.$watch('kw',function(newValue,oldValue){})
+    watch:{
+      myInput: function (newValue,oldValue) {
+        console.log("newValue is "+newValue+" oldValue is "+oldValue);
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

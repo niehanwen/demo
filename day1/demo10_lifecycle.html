@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  {{msg}}
+  <button @click="handleClick">clickMe</button>
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    },
+    methods:{
+      handleClick: function () {
+        this.msg = 'data after modify';
+      }
+    },
+    beforeCreate: function () {
+      console.log('beforeCreate');
+    },
+    created: function () {
+      console.log('created');
+    },
+    beforeMount: function () {
+      console.log('beforeMount');
+    },
+    mounted: function () {
+      console.log('mounted');
+    },
+    beforeUpdate: function () {
+      console.log('beforeUpdate');
+    },
+    updated: function () {
+      console.log('updated');
+    },
+    beforeDestroy: function () {
+      console.log('beforeDestroy');
+    },
+    destroyed: function () {
+      console.log('destroyed');
+    }
+  })
+</script>
+
+</body>
+</html>

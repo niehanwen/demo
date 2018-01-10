@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  <test-component></test-component>
+  <!-- 作为根组件-->
+  <list-component></list-component>
+</div>
+
+<script>
+
+  Vue.component('list-component',{
+    template:`<ul>
+     <li>test01</li>
+     <item-component></item-component>
+
+     </ul>`
+  })
+
+  Vue.component('item-component',{
+    template:'<li>testItem01</li>'
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    },
+    components:{
+      'test-component':{
+        template:'<li>局部组件</li>'
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

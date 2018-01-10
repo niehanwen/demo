@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  <!-- 通过双花扩号 将数据绑定到视图 v-for v-if -->
+  {{msg}}
+  <!-- 将用户在表单中输入的结果绑定到数据  ngModel-->
+  <input type="text" v-model="uName"/>
+  <h1>{{uName}}</h1>
+</div>
+
+<script>
+  new Vue({
+    el:'#example',
+    data:{
+      uName:'123',
+      msg:'hello world'
+    }
+  })
+</script>
+
+</body>
+</html>
